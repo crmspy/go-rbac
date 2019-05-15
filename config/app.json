@@ -1,0 +1,30 @@
+{
+    "database" : "mysql",
+    "generate_key" : "QMrNqr0ytelkI8AcdBxP6j8YQnaWiPEb",
+    "mysql": {
+        "host": "localhost",
+        "port": "3306",
+        "username": "root",
+        "password": "",
+        "database": "go_rbac"
+    },
+    "sqlite": {
+        "file": "db/inventory.db"
+    },
+    "postgresql": {
+        "host": "localhost",
+        "port": "5432",
+        "username": "postgres",
+        "password": "",
+        "database": "go-rbac",
+        "sslmode": "disable"
+    },
+    "order_type": {
+        "P": "Purchase Order",
+        "S": "Sales Order"
+    },
+    "yn":{
+        "Y": "Yes",
+        "N": "No"
+    }
+}
