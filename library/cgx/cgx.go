@@ -7,7 +7,7 @@ import "crypto/sha512"
 import "crypto/sha256"
 import "time"
 import "fmt"
-
+const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 func CgxByteToString(text []byte) string {
     return fmt.Sprintf("%x", text)
