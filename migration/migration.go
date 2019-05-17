@@ -17,7 +17,8 @@ func Run(){
     // conn.Db.AutoMigrate(&inventory.Mproduct{})
     // conn.Db.AutoMigrate(&order.Torder{},&order.TorderLine{})
     // conn.Db.AutoMigrate(&inventory.Minventory{},&inventory.MinventoryLine{},&inventory.Tinout{})
-    conn.Db.AutoMigrate(&core.User{})
+    conn.Db.AutoMigrate(&core.ModelAppUser{})
+    conn.Db.AutoMigrate(&core.ModelAppKey{})
     
 }
 

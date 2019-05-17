@@ -8,13 +8,11 @@ authentication using jwt with database support
 */
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"time"
     "github.com/dgrijalva/jwt-go"
-    log "github.com/Sirupsen/logrus"
     "github.com/spf13/viper"
     "errors"
 )
@@ -74,19 +72,7 @@ func GenerateToken(payload map[string]string) (string, error) {
     return tokenString, err
 }
 
-func ExampleParse(myToken string, myKey string){
-    token, err := jwt.Parse(myToken, func(token *jwt.Token) (interface{}, error) {
-        return []byte(myKey), nil
-    })
 
-    if err == nil && token.Valid {
-		user := token.Claims.(jwt.MapClaims)
-        log.Info("%s", user["foo"])
-        //fmt.Println("Your token is valid.  I like your style.",user["foo"])
-    } else {
-		fmt.Println("This token is terrible!  I cannot accept this.")
-    }
-}
 
 func ParseToken(myToken string) (jwt.MapClaims,error){
     token, err := jwt.Parse(myToken, func(token *jwt.Token) (interface{}, error) {
