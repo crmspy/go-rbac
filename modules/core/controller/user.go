@@ -43,6 +43,7 @@ func Login(c *gin.Context){
         var payload = map[string]string{
             "username": user.Username,
             "email": user.Email,
+            "user_id": strconv.Itoa(user.AppUserId),
         }
         
         createdToken, err := auth.GenerateToken(payload)
