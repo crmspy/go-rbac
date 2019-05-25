@@ -28,6 +28,7 @@ func main() {
 
         auth.POST("/", user.Login)
         auth.GET("/profile", Auth,user.GetProfile)
+        auth.GET("/test", user.Test)
 
         //auth.GET("/logout", Auth,GetTodo)
         //auth.GET("/session", Auth,GetTodo) //get active session

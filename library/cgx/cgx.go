@@ -41,4 +41,15 @@ func CgxNow() time.Time {
     ret := time.Now()
     return ret
 }
+// add nowdatetime + minutes
+
+func CgxNowAdd(minutes int) time.Time {
+    if (minutes==0){
+        return time.Time{}
+    }else{
+        now := time.Now()
+        addedminutes := time.Minute * time.Duration(minutes)
+        return now.Add(addedminutes)
+    }
+}
 

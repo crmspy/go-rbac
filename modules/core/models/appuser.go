@@ -10,7 +10,7 @@ func (ModelAppUser) TableName() string {
 }
 
 type ModelAppUser struct {
-	AppUserId		int			`gorm:"AUTO_INCREMENT;PRIMARY_KEY" json:"user_id"`
+    AppUserId       int         `gorm:"AUTO_INCREMENT;PRIMARY_KEY;COLUMN:app_user_id"  json:"user_id"`
     Username        string      `gorm:"unique;type:varchar(32);" json:"username"`
 	AuthKey         string      `json:"auth_key"`
 	PasswordHash    string      `json:"password"`

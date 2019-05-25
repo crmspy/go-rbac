@@ -1,6 +1,7 @@
 {
     "database" : "mysql",
     "generate_key" : "QMrNqr0ytelkI8AcdBxP6j8YQnaWiPEb",
+    "session_expired" : "0",
     "mysql": {
         "host": "localhost",
         "port": "3306",

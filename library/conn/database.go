@@ -6,6 +6,7 @@ import (
     _ "github.com/jinzhu/gorm/dialects/postgres"
 	log "github.com/Sirupsen/logrus"
     "github.com/spf13/viper"
+
 )
 var (
     // DBCon is the connection handle for the database
@@ -28,8 +29,8 @@ func DbInit() (){
         var username string = viper.GetString("mysql.username")
         var password string = viper.GetString("mysql.password")
         var database string = viper.GetString("mysql.database")
-
-		Db, err = gorm.Open("mysql", username+":"+password+"@tcp("+host+":"+port+")/"+database+"?charset=utf8&parseTime=True&loc=Local")
+        Db, err = gorm.Open("mysql", username+":"+password+"@tcp("+host+":"+port+")/"+database+"?charset=utf8&parseTime=True&loc=Local")
+        
 	}else if dbdriver=="postgresql"{
         /*
             Work In Progress 
@@ -44,12 +45,15 @@ func DbInit() (){
         Db, err = gorm.Open("postgres", "host="+host+" port="+port+" user="+username+" dbname="+database+" password="+password+" sslmode="+sslmode+"")
         
     }
-	//log.Print("try to connect to ",dbdriver)
+	
 	
 	if err != nil {
         log.Println(err)
 		panic("failed to connect database")
-	}
-	//log.Println("connected to database")
+	}else{
+
+	    log.Println("connected to database")
+    }
+    //defer Db.Close()
 }
 

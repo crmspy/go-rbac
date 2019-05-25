@@ -13,6 +13,7 @@ automatic migrate n seed data from model
 func Run(){
     conn.Db.AutoMigrate(&core.ModelAppUser{})
     conn.Db.AutoMigrate(&core.ModelAppKey{})
+    conn.Db.AutoMigrate(&core.ModelAppSession{})
     
 }
 

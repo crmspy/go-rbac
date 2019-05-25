@@ -1,0 +1,37 @@
+package main
+
+/* 
+seeder function is generate a data into database
+*/
+import (
+    cgx "github.com/crmspy/go-rbac/library/cgx"
+    core "github.com/crmspy/go-rbac/modules/core/models"
+    "github.com/crmspy/go-rbac/library/autoload"
+    ."github.com/crmspy/go-rbac/library/conn"
+)
+
+func main(){
+    autoload.Run()
+    //create new user as administrator
+    password := cgx.CgxSha512("superadmin")
+    authkey := cgx.CgxSha256(cgx.CgxGenerateString(64))
+    var user = core.ModelAppUser{ Username: "superadmin", AuthKey: authkey, PasswordHash: password, Email: "crmspy@gmail.com", CreatedAt: cgx.CgxNow() }
+    Db.Create(&user);
+
+    //seed appapi
+    appkey := cgx.CgxGenerateString(32)
+    generatedkey := cgx.CgxSha512(appkey)
+    var appapi = core.ModelAppKey{ AppKeyId:"WEB", Key: appkey, Name:"Web Application", GeneratedKey: generatedkey,CreatedBy: 0,CreatedAt: cgx.CgxNow()}
+    Db.Create(&appapi)
+
+    appkey = cgx.CgxGenerateString(32)
+    generatedkey = cgx.CgxSha512(appkey)
+    appapi = core.ModelAppKey{ AppKeyId:"ANDROID", Key: appkey, Name:"Mobile Android Application", GeneratedKey: generatedkey,CreatedBy: 0,CreatedAt: cgx.CgxNow()}
+    Db.Create(&appapi)
+
+    appkey = cgx.CgxGenerateString(32)
+    generatedkey = cgx.CgxSha512(appkey)
+    appapi = core.ModelAppKey{ AppKeyId:"IOS", Key: appkey, Name:"Mobile IOS Application", GeneratedKey: generatedkey,CreatedBy: 0,CreatedAt: cgx.CgxNow()}
+    Db.Create(&appapi)
+
+}
